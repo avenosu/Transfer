@@ -16,7 +16,7 @@ public class TransferClient {
 	Socket socket= null;
 	private String ip = "169.254.241.254";// 设置成服务器IP
 	private int port = 8000;
-	String command = "upload";
+	String command = "close";
 	String savepath = "G:\\aa\\下载";
 	String filesavepath = null;
 	String uploadpath = "G:\\aa\\上传";

@@ -19,6 +19,7 @@ public class TransferServer {
 	Properties properties = System.getProperties();
 	File fileSending = new File(properties.getProperty("user.dir")+"\\sending");
 	File fileReceving = new File(properties.getProperty("user.dir")+"\\Receving");
+	boolean open = true;
 
 	void start() {
 		//得到当前程序所在目录
@@ -28,7 +29,7 @@ public class TransferServer {
 		fileReceving.mkdir();
 		try {
 			ServerSocket ss = new ServerSocket(port);
-			while(true){
+			while(open){
 				socket = ss.accept();
 				type = new DataInputStream(socket.getInputStream()).readUTF();
 				
@@ -43,6 +44,8 @@ public class TransferServer {
 				case("close"):
 					ss.close();
 					System.out.println("服务器关闭");
+					open = false;
+				break;
 				default:
 					System.out.println("命令错误");
 				}
